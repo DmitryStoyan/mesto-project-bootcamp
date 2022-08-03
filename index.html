@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="./vendor/normalize.css">
+  <link rel="stylesheet" href="./vendor/fonts/Inter-3.19/Inter-Web/inter.css">
+</head>
+
+<body class="body">
+  <div class="page">
+
+    <!-- Header start -->
+    <header class="header">
+      <div class="header__logo"></div>
+    </header>
+    <!-- Header end -->
+
+    <main class="main">
+
+      <!-- Profile start -->
+      <section class="profile">
+        <div class="profile__items">
+          <img src="./images/avatar.jpg" alt="" class="profile__avatar">
+          <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <p class="profile__sublitle">Исследователь океана</p>
+            <button type="button" class="profile__edit-button"></button>
+          </div>
+        </div>
+        <button type="button" class="profile__add-button"></button>
+      </section>
+      <!-- Profile end -->
+
+      <!-- Elements start -->
+      <section class="elements">
+
+        <ul class="element">
+          <li class="element__item">
+            <img src="./images/main/karachayevsk.png" alt="фото Карачаевска" class="element__image">
+            <div class="element__rectangle">
+              <div class="element__signature">
+                <p class="element__subtitle">Карачаевск</p>
+                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+              </div>
+            </div>
+          </li>
+
+
+
+          <li class="element__item">
+            <img src="./images/main/elbrus.png" alt="фото Горы Эльбрус" class="element__image">
+            <div class="element__rectangle">
+              <div class="element__signature">
+                <p class="element__subtitle">Гора Эльбрус</p>
+                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+              </div>
+            </div>
+          </li>
+
+
+
+          <li class="element__item">
+            <img src="./images/main/dombay.png" alt="фото Домбай" class="element__image">
+            <div class="element__rectangle">
+              <div class="element__signature">
+                <p class="element__subtitle">Домбай</p>
+                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+              </div>
+            </div>
+          </li>
+
+
+          <li class="element__item">
+            <img src="./images/main/_curonian-spit.png" alt="фото Куршской косы" class="element__image">
+            <div class="element__rectangle">
+              <div class="element__signature">
+                <p class="element__subtitle">Куршская коса</p>
+                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+              </div>
+            </div>
+          </li>
+
+
+
+          <li class="element__item">
+            <img src="./images/main/altay.png" alt="фото Алтая" class="element__image">
+            <div class="element__rectangle">
+              <div class="element__signature">
+                <p class="element__subtitle">Алтай</p>
+                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+              </div>
+            </div>
+          </li>
+
+
+
+          <li class="element__item">
+            <img src="./images/main/sikhote-alin.png" alt="фото Сихотэ-Алинь" class="element__image">
+            <div class="element__rectangle">
+              <div class="element__signature">
+                <p class="element__subtitle">Карачаево-Черкессия</p>
+                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <!-- Elements start -->
+    </main>
+
+    <!-- Footer start -->
+    <footer class="footer">
+      <p class="footer__author">
+        &#9426 2020 Mesto Russia
+      </p>
+    </footer>
+    <!-- Footer start -->
+  </div>
+
+  <!-- Pop-up start -->
+  <section class="popup">
+    <div class="popup__container">
+      <p class="popup__title">
+        Редактировать профиль
+      </p>
+      <form action="" class="popup__form">
+        <input type="text" class="popup__input" placeholder="Жак-Ив Кусто">
+        <input type="text" class="popup__input" placeholder="Исследователь океана">
+        <button class="popup__button">Сохранить</button>
+      </form>
+      <div class="popup__close"></div>
+    </div>
+  </section>
+  <!-- Pop-up end -->
+</body>
+
+</html>
