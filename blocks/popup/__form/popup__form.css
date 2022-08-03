@@ -1,0 +1,3 @@
+.popup__form:focus .popup__input {
+  outline: none;
+}

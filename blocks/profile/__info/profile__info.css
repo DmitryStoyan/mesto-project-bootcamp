@@ -1,0 +1,15 @@
+.profile__info {
+  max-width: 336px;
+  display: grid;
+  grid-template-areas:
+    "title button"
+    "subtitle subtitle";
+  align-items: center;
+}
+
+@media screen and (max-width: 675px) {
+  .profile__info {
+    max-width: 282px;
+    margin: 0 auto;
+  }
+}

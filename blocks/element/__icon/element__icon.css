@@ -1,0 +1,14 @@
+.element__icon {
+  display: flex;
+  align-items: center;
+  width: 22px;
+  cursor: pointer;
+}
+
+.element__icon:hover {
+  opacity: 0.5;
+}
+
+.element__icon:active {
+  color: #000000;
+}

@@ -1,0 +1,21 @@
+.profile__title {
+  grid-area: title;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 114%;
+  margin: 0 18px 16px 0;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 490px) {
+  .profile__title {
+    font-size: calc(27px + (15 + 15 * 0.7) * ((100vw - 320px) / 1280));
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__title {
+    margin: 22px 10px 14px 0;
+    text-align: center;
+  }
+}
