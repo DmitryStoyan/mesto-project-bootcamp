@@ -188,7 +188,6 @@
 .body {
   background-color: #000000;
   margin: 0 auto;
-  padding: 0;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -202,6 +201,7 @@
   max-width: 880px;
   min-width: 320px;
   margin: 0 auto;
+  padding: 0 19px;
 }
 
 /* Header start */
@@ -256,7 +256,6 @@
   grid-area: title;
   font-weight: 500;
   font-size: 42px;
-  /* font-size: calc(27px +  15 * (100vw / 1280)); */
   line-height: 114%;
   margin: 0 18px 16px 0;
 }
@@ -317,6 +316,11 @@
   justify-items: center;
 }
 
+.element__item {
+  display: flex;
+  flex-direction: column;
+}
+
 .element__image {
   width: 282px;
   height: 282px;
@@ -367,6 +371,7 @@
 /* Element end */
 
 /* Footer start */
+
 .footer__author {
   font-style: normal;
   font-weight: 400;
@@ -401,12 +406,16 @@
   margin: auto;
 }
 
+.popup__body {
+  margin: 34px auto 37px auto;
+}
+
 .popup__title {
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
   color: #000000;
-  margin: 34px auto 54px auto;
+  margin: 0 0 54px 0;
 }
 
 .popup__input {
@@ -435,7 +444,7 @@
   width: 358px;
   max-width: 90%;
   height: 50px;
-  margin: 48px auto 37px auto;
+  margin-top: 48px;
   background-color: #000000;
   font-weight: 400;
   font-size: 18px;
@@ -446,12 +455,12 @@
 }
 
 .popup__close {
-  /* position: absolute;
+  position: absolute;
   right: -44px;
-  top: -46px; */
-  position: relative;
+  top: -46px;
+  /* position: relative;
   left: 100%;
-  top: -125%;
+  top: -125%; */
   padding: 0;
   background: url(../images/icon/close.svg);
   width: 32px;
@@ -479,13 +488,11 @@
   }
 
   .profile__title {
-    /* font-size: calc(27px +  (15 + 15 * 0.7) * ((100vw - 320px) / 1280)); */
     font-size: calc(27px + 15 * (100vw / 1280));
     white-space: nowrap;
   }
 
   .profile__subtitle {
-    /* font-size: calc(18px + 14 * (100vw / 1280)); */
     text-align: center;
   }
 
@@ -498,6 +505,15 @@
   .profile__add-button {
     margin: 0 auto;
   }
+
+  .popup__close {
+    position: absolute;
+    right: 0px;
+    top: -40px;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+  }
 }
 
 @media screen and (max-width: 490px) {
@@ -507,10 +523,6 @@
 
   .profile__subtitle {
     font-size: calc(18px + (14 + 14 * 0.7) * ((100vw - 320) / 1280));
-  }
-
-  .profile__add-button {
-    /* flex-basis: 100%; */
   }
 
   .profile__items {
@@ -561,15 +573,9 @@
   }
 
   .popup__container {
-    position: relative;
     width: 282px;
     max-width: 90%;
     height: 322px;
-    background-color: #FFFFFF;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    text-align: center;
-    margin: auto;
   }
 
   .popup__title {
@@ -597,13 +603,10 @@
   }
 
   .popup__close {
-    position: relative;
-    left: 90%;
-    top: -115%;
-    padding: 0;
+    right: 0px;
+    top: -40px;
     width: 20px;
     height: 20px;
-    background-repeat: no-repeat;
     background-size: contain;
   }
 }
