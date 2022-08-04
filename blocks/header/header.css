@@ -3,5 +3,6 @@
   max-width: 880px;
   margin: 45px 0 41px 0;
   padding-bottom: 41px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid RGBA(84,84,84,0.7);
+
 }
