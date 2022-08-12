@@ -15,8 +15,6 @@
 
 @media screen and (max-width: 320px) {
   .profile__avatar {
-    display: block;
-    flex-wrap: wrap;
     margin: 0;
   }
 }

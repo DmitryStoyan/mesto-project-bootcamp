@@ -21,87 +21,86 @@
       <!-- Profile start -->
       <section class="profile">
         <div class="profile__items">
-          <img src="./images/avatar.jpg" alt="" class="profile__avatar">
+          <img src="./images/avatar.jpg" alt="аватар пользователя" class="profile__avatar">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
             <button type="button" class="profile__edit-button"></button>
           </div>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button type="button" class="profile__add-button" aria-label="редактированить профиль"></button>
       </section>
       <!-- Profile end -->
 
       <!-- Elements start -->
       <section class="elements">
 
-        <ul class="element">
-          <li class="element__item">
+        <ul class="elements__list">
+          <li class="element">
             <img src="./images/main/karachayevsk.png" alt="фото Карачаевска" class="element__image">
             <div class="element__rectangle">
               <div class="element__signature">
                 <h2 class="element__subtitle">Карачаевск</h2>
-                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+                <button class="element__like-button" type="button" aria-label="лайк"></button>
               </div>
             </div>
           </li>
 
 
 
-          <li class="element__item">
+          <li class="element">
             <img src="./images/main/elbrus.png" alt="фото Горы Эльбрус" class="element__image">
             <div class="element__rectangle">
               <div class="element__signature">
                 <h2 class="element__subtitle">Гора Эльбрус</h2>
-                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+                <button class="element__like-button" type="button" aria-label="лайк"></button>
               </div>
             </div>
           </li>
 
 
 
-          <li class="element__item">
+          <li class="element">
             <img src="./images/main/dombay.png" alt="фото Домбай" class="element__image">
             <div class="element__rectangle">
               <div class="element__signature">
                 <h2 class="element__subtitle">Домбай</h2>
-                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+                <button class="element__like-button" type="button" aria-label="лайк"></button>
               </div>
             </div>
           </li>
 
 
-          <li class="element__item">
+          <li class="element">
             <img src="./images/main/_curonian-spit.png" alt="фото Куршской косы" class="element__image">
             <div class="element__rectangle">
               <div class="element__signature">
                 <h2 class="element__subtitle">Куршская коса</h2>
-                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+                <button class="element__like-button" type="button" aria-label="лайк"></button>
               </div>
             </div>
           </li>
 
 
 
-          <li class="element__item">
+          <li class="element">
             <img src="./images/main/altay.png" alt="фото Алтая" class="element__image">
             <div class="element__rectangle">
               <div class="element__signature">
                 <h2 class="element__subtitle">Алтай</h2>
-                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
+                <button class="element__like-button" type="button" aria-label="лайк"></button>
               </div>
             </div>
           </li>
 
 
 
-          <li class="element__item">
+          <li class="element">
             <img src="./images/main/sikhote-alin.png" alt="фото Сихотэ-Алинь" class="element__image">
             <div class="element__rectangle">
               <div class="element__signature">
                 <h2 class="element__subtitle">Карачаево-Черкессия</h2>
-                <img src="./images/icon/like.svg" alt="иконка лайк" class="element__icon">
-                </a>
+                <button class="element__like-button" type="button" aria-label="лайк"></button>
               </div>
             </div>
           </li>
@@ -113,29 +112,26 @@
     <!-- Footer start -->
     <footer class="footer">
       <p class="footer__author">
-        &#9426 2020 Mesto Russia
+        &#9426;2020 Mesto Russia
       </p>
     </footer>
     <!-- Footer start -->
   </div>
 
   <!-- Pop-up start -->
-  <section class="popup">
+  <div class="popup">
     <div class="popup__container">
-      <div class="popup__body">
-        <p class="popup__title">
+        <h2 class="popup__title">
           Редактировать профиль
-        </p>
-        <form action="" class="popup__form">
+        </h2>
+        <form action="name" class="popup__form">
           <input type="text" name="name" class="popup__input" placeholder="Жак-Ив Кусто">
           <input type="text" name="description" class="popup__input" placeholder="Исследователь океана">
-          <button type="submit" class="popup__button">Сохранить</button>
+          <button type="submit" class="popup__save-button" aria-label="сохранить">Сохранить</button>
         </form>
-        <div class="popup__close"></div>
+        <button class="popup__close-button" type="button" aria-label="закрыть"></button>
       </div>
-
-    </div>
-  </section>
+  </div>
   <!-- Pop-up end -->
 </body>
 

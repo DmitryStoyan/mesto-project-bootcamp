@@ -1,4 +1,4 @@
-.popup__button {
+.popup__save-button {
   width: 358px;
   max-width: 90%;
   height: 50px;
@@ -7,15 +7,15 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  border-radius: 2px;
   text-align: center;
   color: #FFFFFF;
   cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
-  .popup__button {
+  .popup__save-button {
     width: 238px;
-    max-width: 90%;
     height: 46px;
     margin: 45px auto 25px auto;
     font-size: 14px;
