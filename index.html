@@ -25,10 +25,10 @@
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
-            <button type="button" class="profile__edit-button"></button>
+            <button type="button" class="profile__edit-button" aria-label="редактированить профиль"></button>
           </div>
         </div>
-        <button type="button" class="profile__add-button" aria-label="редактированить профиль"></button>
+        <button type="button" class="profile__add-button" aria-label="добавить карточку"></button>
       </section>
       <!-- Profile end -->
 
@@ -125,14 +125,16 @@
           Редактировать профиль
         </h2>
         <form action="name" class="popup__form">
-          <input type="text" name="name" class="popup__input" placeholder="Жак-Ив Кусто">
-          <input type="text" name="description" class="popup__input" placeholder="Исследователь океана">
+          <input type="text" name="name" class="popup__input popup__input-name" placeholder="Жак-Ив Кусто">
+          <input type="text" name="description" class="popup__input popup__input-job" placeholder="Исследователь океана">
           <button type="submit" class="popup__save-button" aria-label="сохранить">Сохранить</button>
         </form>
         <button class="popup__close-button" type="button" aria-label="закрыть"></button>
       </div>
   </div>
   <!-- Pop-up end -->
+
+  <script src="main.js"></script>
 </body>
 
 </html>
