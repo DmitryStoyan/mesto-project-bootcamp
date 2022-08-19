@@ -1,0 +1,22 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "### Обзор * Figma * Картинки",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitryStoyan/mesto-project-bootcamp.git"
+  },
+  "author": "Stoyan Dmitry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmitryStoyan/mesto-project-bootcamp/issues"
+  },
+  "homepage": "https://github.com/DmitryStoyan/mesto-project-bootcamp#readme",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}

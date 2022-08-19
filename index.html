@@ -118,21 +118,37 @@
     <!-- Footer start -->
   </div>
 
-  <!-- Pop-up start -->
-  <div class="popup">
+  <!-- Pop-up profile start -->
+  <div class="popup popup-profile">
     <div class="popup__container">
         <h2 class="popup__title">
           Редактировать профиль
         </h2>
         <form action="name" class="popup__form">
-          <input type="text" name="name" class="popup__input popup__input-name" placeholder="Жак-Ив Кусто">
-          <input type="text" name="description" class="popup__input popup__input-job" placeholder="Исследователь океана">
+          <input type="text" name="name" class="popup__input popup__input-name" placeholder="Имя">
+          <input type="text" name="description" class="popup__input popup__input-job" placeholder="Профессия">
           <button type="submit" class="popup__save-button" aria-label="сохранить">Сохранить</button>
         </form>
         <button class="popup__close-button" type="button" aria-label="закрыть"></button>
       </div>
   </div>
-  <!-- Pop-up end -->
+  <!-- Pop-up profile end -->
+
+  <!-- Pop-up card start -->
+  <div class="popup popup-card">
+    <div class="popup__container">
+        <h2 class="popup__title">
+          Новое место
+        </h2>
+        <form action="name" class="popup__form">
+          <input type="text" name="name" class="popup__input popup__input-name" placeholder="Название">
+          <input type="text" name="description" class="popup__input popup__input-job" placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__save-button" aria-label="сохранить">Создать</button>
+        </form>
+        <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+      </div>
+  </div>
+  <!-- Pop-up card end -->
 
   <script src="main.js"></script>
 </body>
