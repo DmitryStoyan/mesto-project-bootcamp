@@ -1,4 +1,4 @@
-.popup {
+.popup-card {
   position: fixed;
   display: flex;
   left: 0;
@@ -9,6 +9,8 @@
   display: none;
 }
 
-.popup.active {
+.popup-card.active {
   display: flex;
 }
+
+

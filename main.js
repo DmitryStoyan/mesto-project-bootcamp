@@ -1,18 +1,29 @@
 // Закрытие и открытие модального окна
 
-const openPopUp = document.querySelector('.profile__edit-button');
-const closePopUp = document.querySelector('.popup__close-button');
-const popUp = document.querySelector('.popup');
+const openPopupProfile = document.querySelector('.profile__edit-button');
+const closePopupProfile = document.querySelector('.popup__close-profile');
+const popupProfile = document.querySelector('.popup-profile');
 
-openPopUp.addEventListener('click', function(){
-  popUp.classList.add('active');
+openPopupProfile.addEventListener('click', function(){
+  popupProfile.classList.add('active');
 })
 
-closePopUp.addEventListener('click', () => {
-  popUp.classList.remove('active');
+closePopupProfile.addEventListener('click', () => {
+  popupProfile.classList.remove('active');
 })
 
+//// Закрытие и открытие формы добавления карточки
+const openPopupCard = document.querySelector('.profile__add-button');
+const closePopupCard = document.querySelector('.popup__close-card')
+const popupCard = document.querySelector('.popup-card');
 
+openPopupCard.addEventListener('click', function(){
+  popupCard.classList.add('active');
+})
+
+closePopupCard.addEventListener('click', () => {
+  popupCard.classList.remove('active');
+})
 
 // Изменение страницы через PopUp
 
@@ -31,7 +42,7 @@ function formSubmitHandler (evt) {
   profileSubitle.textContent = jobInput.value;
 
   popupSave.addEventListener('click', () => {
-    popUp.classList.remove('active');
+    popupProfile.classList.remove('active');
   })
 }
 
