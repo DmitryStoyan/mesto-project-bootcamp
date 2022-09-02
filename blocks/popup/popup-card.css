@@ -1,12 +1,4 @@
 .popup-card {
-  /* position: fixed;
-  display: flex;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: none; */
   position: fixed;
   display: flex;
   left: 0;
@@ -18,7 +10,7 @@
   z-index: 3;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 1s linear;
+  transition: visibility 0s, opacity .5s linear;
 }
 
 .popup-card.active {
