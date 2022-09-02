@@ -1,0 +1,6 @@
+.element__description {
+  background-color: #FFFFFF;
+  border-radius: 0px 0px 10px 10px;
+  width: 282px;
+  display: flex;
+}

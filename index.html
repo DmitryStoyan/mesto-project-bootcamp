@@ -34,79 +34,21 @@
 
       <!-- Elements start -->
       <section class="elements">
-
-        <ul class="elements__list">
-          <li class="element">
-            <img src="./images/main/karachayevsk.png" alt="фото Карачаевска" class="element__image">
-            <div class="element__rectangle">
-              <div class="element__signature">
-                <h2 class="element__subtitle">Карачаевск</h2>
-                <button class="element__like-button" type="button" aria-label="лайк"></button>
+        <template id="place-template">
+          <article class="element">
+            <button class="element__trash-button" type="button"></button>
+            <img class="element__img" alt="">
+            <div class="element__description">
+              <div class="element__sign">
+                <h2 class="element__title"></h2>
+                <button class="element__like-but" type="button" aria-label="like"></button>
               </div>
             </div>
-          </li>
-
-
-
-          <li class="element">
-            <img src="./images/main/elbrus.png" alt="фото Горы Эльбрус" class="element__image">
-            <div class="element__rectangle">
-              <div class="element__signature">
-                <h2 class="element__subtitle">Гора Эльбрус</h2>
-                <button class="element__like-button" type="button" aria-label="лайк"></button>
-              </div>
-            </div>
-          </li>
-
-
-
-          <li class="element">
-            <img src="./images/main/dombay.png" alt="фото Домбай" class="element__image">
-            <div class="element__rectangle">
-              <div class="element__signature">
-                <h2 class="element__subtitle">Домбай</h2>
-                <button class="element__like-button" type="button" aria-label="лайк"></button>
-              </div>
-            </div>
-          </li>
-
-
-          <li class="element">
-            <img src="./images/main/_curonian-spit.png" alt="фото Куршской косы" class="element__image">
-            <div class="element__rectangle">
-              <div class="element__signature">
-                <h2 class="element__subtitle">Куршская коса</h2>
-                <button class="element__like-button" type="button" aria-label="лайк"></button>
-              </div>
-            </div>
-          </li>
-
-
-
-          <li class="element">
-            <img src="./images/main/altay.png" alt="фото Алтая" class="element__image">
-            <div class="element__rectangle">
-              <div class="element__signature">
-                <h2 class="element__subtitle">Алтай</h2>
-                <button class="element__like-button" type="button" aria-label="лайк"></button>
-              </div>
-            </div>
-          </li>
-
-
-
-          <li class="element">
-            <img src="./images/main/sikhote-alin.png" alt="фото Сихотэ-Алинь" class="element__image">
-            <div class="element__rectangle">
-              <div class="element__signature">
-                <h2 class="element__subtitle">Карачаево-Черкессия</h2>
-                <button class="element__like-button" type="button" aria-label="лайк"></button>
-              </div>
-            </div>
-          </li>
-        </ul>
+          </article>
+        </template>
       </section>
-      <!-- Elements start -->
+      <!-- Elements end -->
+
     </main>
 
     <!-- Footer start -->
@@ -121,34 +63,42 @@
   <!-- Pop-up profile start -->
   <div class="popup popup-profile">
     <div class="popup__container">
-        <h2 class="popup__title">
-          Редактировать профиль
-        </h2>
-        <form action="name" class="popup__form">
-          <input type="text" name="name" class="popup__input popup__input-name" placeholder="Имя">
-          <input type="text" name="description" class="popup__input popup__input-job" placeholder="Профессия">
-          <button type="submit" class="popup__button popup__save-button" aria-label="сохранить">Сохранить</button>
-        </form>
-        <button class="popup__close-button popup__close-profile" type="button" aria-label="закрыть"></button>
-      </div>
+      <h2 class="popup__title">
+        Редактировать профиль
+      </h2>
+      <form action="name" class="popup__form popup-profile__form">
+        <input type="text" name="name" class="popup__input popup__input-name" placeholder="Имя">
+        <input type="text" name="description" class="popup__input popup__input-job" placeholder="Профессия">
+        <button type="submit" class="popup__button popup__save-button" aria-label="сохранить">Сохранить</button>
+      </form>
+      <button class="popup__close-button popup__close-profile" type="button" aria-label="закрыть"></button>
+    </div>
   </div>
   <!-- Pop-up profile end -->
 
   <!-- Pop-up card start -->
   <div class="popup popup-card">
     <div class="popup__container">
-        <h2 class="popup__title">
-          Новое место
-        </h2>
-        <form action="name" class="popup__form">
-          <input type="text" name="name" class="popup__input popup__input-title" placeholder="Название">
-          <input type="text" name="description" class="popup__input popup__input-card" placeholder="Ссылка на картинку">
-          <button type="submit" class="popup__button popup__create-button" aria-label="сохранить">Создать</button>
-        </form>
-        <button class="popup__close-button popup__close-card" type="button" aria-label="закрыть"></button>
-      </div>
+      <h2 class="popup__title">
+        Новое место
+      </h2>
+      <form action="name" class="popup__form popup-card__form">
+        <input type="text" name="name" class="popup__input popup__input-title" placeholder="Название">
+        <input type="text" name="description" class="popup__input popup__input-image" placeholder="Ссылка на картинку">
+        <button type="submit" class="popup__button popup__create-button" aria-label="сохранить">Создать</button>
+      </form>
+      <button class="popup__close-button popup__close-card" type="button" aria-label="закрыть"></button>
+    </div>
   </div>
   <!-- Pop-up card end -->
+
+  <div class="popup popup-image">
+    <div class="popup-image__wrapper">
+      <button type="button" class="popup__close-button" aria-label="Close"></button>
+      <img class="popup-image__container" src="#" alt="#">
+      <p class="popup-image__name"></p>
+    </div>
+  </div>
 
   <script src="main.js"></script>
 </body>

@@ -6,9 +6,13 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  display: none;
+  display: flex;
+  z-index: 3;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 1s linear;
 }
 
-.popup-profile.active {
+/* .popup-profile.active {
   display: flex;
-}
+} */

@@ -4,6 +4,7 @@
   "description": "### Обзор * Figma * Картинки",
   "main": "main.js",
   "scripts": {
+    "start": "css-to-bem-file-structure test.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,9 @@
   "homepage": "https://github.com/DmitryStoyan/mesto-project-bootcamp#readme",
   "dependencies": {
     "jquery": "^3.6.0"
-  }
+  },
+  "devDependencies": {
+    "css-to-bem-file-structure": "^0.0.2"
+  },
+  "keywords": []
 }
