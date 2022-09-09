@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="body">
@@ -21,7 +20,7 @@
       <!-- Profile start -->
       <section class="profile">
         <div class="profile__items">
-          <img src="./images/avatar.jpg" alt="аватар пользователя" class="profile__avatar">
+          <img src="<%=require('./images/avatar.jpg')%>" alt="аватар пользователя" class="profile__avatar">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
@@ -66,10 +65,18 @@
       <h2 class="popup__title">
         Редактировать профиль
       </h2>
-      <form action="name" class="popup__form popup-profile__form">
-        <input type="text" name="name" class="popup__input popup__input-name" placeholder="Имя">
-        <input type="text" name="description" class="popup__input popup__input-job" placeholder="Профессия">
-        <button type="submit" class="popup__button popup__save-button" aria-label="сохранить">Сохранить</button>
+      <form action="name" name="edit-profile" id="edit-profile" class="popup__form popup-profile__form popup__edit-profile" novalidate>
+        <label class="popup__input-box">
+        <input id="profile-name" name="profile-name" type="text" class="popup__input popup__input-name popup__container-field" placeholder="Имя" required
+        minlength="2" maxlength="40">
+        <span class="popup__input-error profile-name-error"></span>
+        </label>
+        <label class="popup__input-box">
+        <input id="profile-job" name="profile-job" type="text" class="popup__input popup__input-job popup__container-field" placeholder="Профессия" required minlength="2"
+        maxlength="200">
+        <span class="popup__input-error profile-job-error"></span>
+        </label>
+        <button type="submit" class="popup__button popup__save-button popup__container-button" aria-label="сохранить">Сохранить</button>
       </form>
       <button class="popup__close-button popup__close-profile" type="button" aria-label="закрыть"></button>
     </div>
@@ -79,15 +86,21 @@
   <!-- Pop-up card start -->
   <div class="popup popup-card">
     <div class="popup__container">
-      <h2 class="popup__title">
-        Новое место
-      </h2>
-      <form action="name" class="popup__form popup-card__form">
-        <input type="text" name="name" class="popup__input popup__input-title" placeholder="Название">
-        <input type="text" name="description" class="popup__input popup__input-image" placeholder="Ссылка на картинку">
-        <button type="submit" class="popup__button popup__create-button" aria-label="сохранить">Создать</button>
-      </form>
+      <form name="edit-profile" class="popup__form popup-card__form popup__edit-profile" novalidate>
+        <h2 class="popup__title">
+          Новое место
+        </h2>
+        <label class="popup__input-box">
+        <input id="new-place-name" name="place-name" type="text" class="popup__input popup__input-title popup__container-field" placeholder="Название" placeholder="Название" required minlength="2" maxlength="30">
+        <span class="popup__input-error new-place-name-error"></span>
+        </label>
+        <label class="popup__input-box">
+        <input id="new-place-src" name="place-src" type="url" class="popup__input popup__input-image popup__container-field" placeholder="Ссылка на картинку" required>
+        <span class="popup__input-error new-place-src-error"></span>
+        </label>
+        <button type="submit" class="popup__button popup__create-button popup__container-button" aria-label="сохранить">Создать</button>
       <button class="popup__close-button popup__close-card" type="button" aria-label="закрыть"></button>
+    </form>
     </div>
   </div>
   <!-- Pop-up card end -->
@@ -99,8 +112,5 @@
       <p class="popup-image__name"></p>
     </div>
   </div>
-
-  <script src="main.js"></script>
 </body>
-
 </html>

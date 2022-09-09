@@ -7,4 +7,5 @@
   margin: 0;
   padding: 0;
   justify-items: center;
+  min-height: 30vh;
 }

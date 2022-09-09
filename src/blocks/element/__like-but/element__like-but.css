@@ -5,6 +5,7 @@
   width: 24px;
   height: 22px;
   cursor: pointer;
+  padding-left: 16px;
 }
 
 .element__like-but:hover {
