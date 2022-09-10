@@ -1,5 +1,5 @@
-import { initialCards, cardsContent, popupCard, popupWithImage } from "./constants";
-import { closePopup } from "./modal";
+import { cardsContent, popupWithImage, popupImageContainer, popupImageName, initialCards } from './constants.js';
+import { closePopup } from './modal.js';
 
 export function createCard(card) {
   const contentItemTemplate = cardsContent.querySelector('#place-template').content;
@@ -29,6 +29,10 @@ export function createCard(card) {
   });
 
   return newCard;
+};
+
+export function openPopup(popup) {
+  popup.classList.add('popup_opened');
 };
 
 initialCards.forEach(card => {
