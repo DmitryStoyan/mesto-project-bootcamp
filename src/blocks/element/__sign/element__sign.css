@@ -1,7 +1,8 @@
 .element__sign {
   display: flex;
   justify-content: space-between;
+  margin-left: 21px;
+  margin-right: 15px;
   align-items: center;
-  width: 246px;
-  margin: 0 auto;
+  min-height: 79px;
 }

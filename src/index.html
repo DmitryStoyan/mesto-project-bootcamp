@@ -20,10 +20,12 @@
       <!-- Profile start -->
       <section class="profile">
         <div class="profile__items">
-          <img src="<%=require('./images/avatar.jpg')%>" alt="аватар пользователя" class="profile__avatar">
+          <div class="profile__avatar">
+            <button class="profile__avatar-button"></button>
+          </div>
           <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <p class="profile__subtitle">Исследователь океана</p>
+            <h1 class="profile__title">Загрузка...</h1>
+            <p class="profile__subtitle">Загрузка...</p>
             <button type="button" class="profile__edit-button" aria-label="редактированить профиль"></button>
           </div>
         </div>
@@ -37,12 +39,13 @@
           <article class="element">
             <button class="element__trash-button" type="button"></button>
             <img class="element__img" alt="">
-            <div class="element__description">
               <div class="element__sign">
                 <h2 class="element__title"></h2>
-                <button class="element__like-but" type="button" aria-label="like"></button>
+                <div class="element__likes-container">
+                  <button class="element__like-but" type="button" aria-label="like"></button>
+                  <span class="element__likes"></span>
+                </div>
               </div>
-            </div>
           </article>
         </template>
       </section>
@@ -112,5 +115,22 @@
       <p class="popup-image__name"></p>
     </div>
   </div>
+
+  <!-- Popup avatar start -->
+    <div class="popup popup__avatar">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button" aria-label="Close"></button>
+        <form name="edit-avatar" id="edit-avatar" class="popup__form popup__edit-profile" novalidate>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <label class="popup__input-box">
+            <input id="avatar-edit" name="avatar-edit" type="url" class="popup__container-field" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error avatar-edit-error" id="avatar-edit-error"></span>
+          </label>
+          <button name="save-avatar" id="save-avatar" type="submit" class="popup__button popup__container-button"
+            aria-label="Save">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  <!-- Popup avatar end -->
 </body>
 </html>

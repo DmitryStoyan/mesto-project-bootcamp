@@ -1,39 +1,96 @@
 import '../index.css';
 
-import { buttonOpenPopupProfile, closePopupProfileButton, openPopupCard, closePopupCard, popupProfile, popupCard, popupCloseButtons, editProfileForm, formPopupCard, cardsContent, popupWithImage, editProfileFormNameInput, editProfileFormJobInput, popupImageContainer, popupImageName, nameInput, imageLinkInput, profile, initialCards } from './constants.js';
-import { closePopup } from './modal.js';
-import { createCard } from './card';
+import {
+  buttonOpenPopupProfile,
+  closePopupProfileButton,
+  openPopupCard,
+  closePopupCard,
+  popupProfile,
+  popupCard,
+  popupCloseButtons,
+  editProfileForm,
+  formPopupCard,
+  cardsContent,
+  popupWithImage,
+  editProfileFormNameInput,
+  editProfileFormJobInput,
+  popupImageContainer,
+  popupImageName,
+  nameInput,
+  imageLinkInput,
+  profile,
+  popupAvatar,
+  popupAvatarEdit,
+  inputAvatar,
+  formAvatar
+} from './constants.js';
+import { closePopup, openPopup } from './modal.js';
+import { createHTMLCard } from './card';
+import { toggleButtonState, resetInputFields } from './utils.js';
 import { enablevalidation } from './validate.js';
-import { toggleButtonState } from './utils.js'
+import { getUserInfo, editUserInfo, createCard, getCards, updateAvatar } from './api.js';
 
+let user = null;
 
-function openPopupForEditingProfile() {
-  editProfileFormNameInput.value = profile.name.textContent;
-  editProfileFormJobInput.value = profile.job.textContent;
+// Отправляем запрос на получение данных о пользователе
+getUserInfo()
+  .then(initializeUser)
+  .catch(error => console.log(error));
 
-  openPopup(popupProfile);
+// Загрузка данных пользователя и аватара на страницу
+function initializeUser(_user) {
+  user = _user;
+  profile.avatar.style.setProperty('background-image', `url(${_user.avatar})`);
+  profile.name.textContent = _user.name;
+  profile.job.textContent = _user.about;
 }
 
-function closePopupForEditingProfile() {
-  closePopup(popupProfile);
-}
+// Отправляем запрос на получение всех карточек
+getCards()
+  .then(cards => cards.reverse().forEach(card => {
+    cardsContent.prepend(createHTMLCard(card, user));
+  }))
+  .catch(error => console.log(error));
 
-buttonOpenPopupProfile.addEventListener('click', openPopupForEditingProfile);
-closePopupProfileButton.addEventListener('click', closePopupForEditingProfile);
+buttonOpenPopupProfile.addEventListener('click', () => openPopup(popupProfile, [{
+  input: editProfileFormNameInput,
+  value: profile.name.textContent,
+}, {
+  input: editProfileFormJobInput,
+  value: profile.job.textContent,
+}]));
+closePopupProfileButton.addEventListener('click', () => closePopup(popupProfile));
 
+// Pop-up создания карточки
 openPopupCard.addEventListener('click', () => {
+
   openPopup(popupCard);
 });
+closePopupCard.addEventListener('click', () => closePopup(popupCard));
+// formPopupCard.addEventListener('submit', getValuesFromCreateCardPopup);
+formPopupCard.addEventListener('submit', (event) => {
 
-closePopupCard.addEventListener('click', () => {
-  closePopup(popupCard);
+  event.preventDefault();
+  event.submitter.textContent = 'Сохранение...';
+  getValuesFromCreateCardPopup(event);
 });
+
 
 function editProfile(event) {
   event.preventDefault();
 
-  profile.name.textContent = editProfileFormNameInput.value;
-  profile.job.textContent = editProfileFormJobInput.value;
+  const newUserInfo = {
+    name: editProfileFormNameInput.value,
+    about: editProfileFormJobInput.value
+  };
+
+  // Отправляем запрос на редактирование данных о пользователе
+  editUserInfo(newUserInfo)
+    .then((user) => {
+      profile.name.textContent = user.name;
+      profile.job.textContent = user.about;
+    })
+    .catch((error) => console.log(error));
 
   popupProfile.classList.remove('popup_opened');
 }
@@ -48,17 +105,14 @@ function getValuesFromCreateCardPopup(event) {
     link: imageLinkInput.value
   };
 
-  resetInputFields(nameInput, imageLinkInput);
-
-  cardsContent.prepend(createCard(card));
-
-  popupCard.classList.remove('popup_opened');
-}
-
-function resetInputFields(...inputs) {
-  inputs.forEach(input => {
-    input.value = '';
-  });
+  // Отправляем запрос на создание новой карточки
+  createCard(card)
+    .then((card) => {
+      resetInputFields(nameInput, imageLinkInput);
+      cardsContent.prepend(createHTMLCard(card, user));
+      closePopup(popupCard);
+    })
+    .catch((error) => console.log(error));
 }
 
 popupCloseButtons.forEach((button) => {
@@ -66,26 +120,37 @@ popupCloseButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
-document.addEventListener('keydown', function (evt) {
+//открытие попап редактирования аватар
+popupAvatarEdit.addEventListener('click', function (event) {
+  inputAvatar.value = '';
+  openPopup(popupAvatar);
+});
+
+//функция замены ссылки на аватар
+formAvatar.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  event.submitter.textContent = 'Сохранение...';
+
+  updateAvatar(inputAvatar.value)
+    .then((user) => {
+      profile.avatar.style.setProperty("background-image", `url(${user.avatar})`);
+      closePopup(popupAvatar);
+    })
+    .catch((error) => console.log(error))
+    .finally(() => {
+      event.submitter.textContent = 'Сохранить';
+    })
+});
+
+document.addEventListener('click', function (event) {
   const popup = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
+  if (event.target === popup) {
     closePopup(popup);
   }
 });
 
 
-document.addEventListener('click', function (evt) {
-  const popup = document.querySelector('.popup_opened');
-  if (evt.target === popup) {
-    closePopup(popup);
-  }
-})
-
-formPopupCard.addEventListener('submit', getValuesFromCreateCardPopup);
-
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-};
 
 enablevalidation({
   formSelector: '.popup__edit-profile',
@@ -95,3 +160,7 @@ enablevalidation({
   inputErrorClass: 'popup__container-field_error',
   errorClass: 'popup__input-error_active',
 });
+
+
+
+

@@ -1,3 +1,14 @@
 .element {
   position: relative;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+@media (min-width:619px) {
+  .content__item {
+    max-width: 282px;
+    max-height: 361px;
+  }
 }

@@ -1,3 +1,35 @@
+// import {toggleButtonState} from './utils.js';
+
+// export const showError = (formElement, inputElement, errorMessage, options) => {
+//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+//   console.log(errorElement, formElement.querySelector(`.${inputElement.id}-error`));
+//   errorElement.classList.add(options.errorClass)
+//   errorElement.textContent = errorMessage;
+//   inputElement.classList.add(options.inputErrorClass);
+// };
+
+// export const hideError = (formElement, inputElement, options) => {
+//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+//   errorElement.classList.remove(options.errorClass);
+//   errorElement.textContent = "";
+//   inputElement.classList.remove(options.inputErrorClass);
+// };
+
+// export const checkInputValidity = (formElement, inputElement, options) => {
+//   if (!inputElement.validity.valid) {
+//     showError(formElement, inputElement, inputElement.validationMessage, options);
+//   } else {
+//     hideError(formElement, inputElement, options);
+//   }
+// };
+
+// export function hasInvalidInput(inputList) {
+//   return inputList.some((inputElement) => {
+//     return !inputElement.validity.valid;
+//   });
+// };
+
+
 import {toggleButtonState} from './utils.js';
 
 export const showError = (formElement, inputElement, errorMessage, options) => {

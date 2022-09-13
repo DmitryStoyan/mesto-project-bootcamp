@@ -1,4 +1,5 @@
-import {hasInvalidInput} from './validate.js';
+import { hasInvalidInput } from './validate.js';
+import Api from './api.js'
 
 export function toggleButtonState(inputList, buttonElement, options) {
   if (hasInvalidInput(inputList)) {
@@ -8,4 +9,10 @@ export function toggleButtonState(inputList, buttonElement, options) {
     buttonElement.classList.remove(options.inactiveButtonClass);
     buttonElement.removeAttribute("disabled");
   }
+};
+
+export function resetInputFields(...inputs) {
+  inputs.forEach(input => {
+    input.value = '';
+  });
 };

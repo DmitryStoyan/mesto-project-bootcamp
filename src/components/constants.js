@@ -15,33 +15,21 @@ export const popupImageContainer = popupWithImage.querySelector('.popup-image__c
 export const popupImageName = popupWithImage.querySelector('.popup-image__name');
 export const nameInput = formPopupCard.querySelector('.popup__input-title');
 export const imageLinkInput = formPopupCard.querySelector('.popup__input-image');
+export const popupAvatar = document.querySelector('.popup__avatar');
+export const popupAvatarEdit = document.querySelector('.profile__avatar-button');
+export const inputAvatar = document.querySelector('#avatar-edit');
+export const formAvatar = document.querySelector('#edit-avatar');
 export const profile = {
+  avatar: document.querySelector('.profile__avatar'),
   name: document.querySelector('.profile__title'),
   job: document.querySelector('.profile__subtitle')
 };
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+
+// API
+export const cohortId = 'wbc-cohort-1';
+export const token = '2a4a97ff-1e79-431a-b791-507bc640fd7b';
+export const usersMeApi = `https://nomoreparties.co/v1/${cohortId}/users/me`;
+export const cardsApi = `https://nomoreparties.co/v1/${cohortId}/cards`;
+export const usersMeAvatarApi = `https://nomoreparties.co/v1/${cohortId}/users/me/avatar`;
+export const cardsLikesApi = `https://nomoreparties.co/v1/${cohortId}/cards/likes`;
+
