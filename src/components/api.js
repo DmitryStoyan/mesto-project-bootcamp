@@ -1,9 +1,9 @@
-import { token, usersMeApi, cardsApi, usersMeAvatarApi, cardsLikesApi } from './constants.js';
-
 // Обязательная конфигурация для API
 const config = {
+  baseUrl: "https://nomoreparties.co/v1/wbc-cohort-1",
   headers: {
-    authorization: token
+    authorization: "2a4a97ff-1e79-431a-b791-507bc640fd7b",
+    "Content-type": "application/json"
   }
 };
 
@@ -17,26 +17,23 @@ export function checkResponse(response) {
 
 // Получить информацию о пользователе
 export function getUserInfo() {
-  return fetch(usersMeApi, config)
+  return fetch(config.baseUrl + "/users/me", config)
     .then(checkResponse)
     .then((data) => data);
 }
 
 // Получить карточки
 export function getCards() {
-  return fetch(cardsApi, config)
+  return fetch(config.baseUrl + "/cards", config)
     .then(checkResponse)
     .then((data) => data);
 }
 
 // Создание карточки
 export function createCard({ name, link }) {
-  return fetch(cardsApi, {
+  return fetch(config.baseUrl + "/cards", {
     method: 'POST',
-    headers: {
-      ...config.headers,
-      'Content-Type': 'application/json'
-    },
+    headers: config.headers,
     body: JSON.stringify({
       name: name,
       link: link
@@ -48,12 +45,9 @@ export function createCard({ name, link }) {
 
 // Редактирование профиля
 export function editUserInfo({ name, about }) {
-  return fetch(usersMeApi, {
+  return fetch(config.baseUrl + "/users/me", {
     method: 'PATCH',
-    headers: {
-      ...config.headers,
-      'Content-Type': 'application/json'
-    },
+    headers: config.headers,
     body: JSON.stringify({
       name: name,
       about: about
@@ -66,12 +60,9 @@ export function editUserInfo({ name, about }) {
 
 // Обновление аватара пользователя
 export function updateAvatar(avatar) {
-  return fetch(usersMeAvatarApi, {
+  return fetch(config.baseUrl + "/users/me/avatar", {
     method: 'PATCH',
-    headers: {
-      ...config.headers,
-      'Content-Type': 'application/json'
-    },
+    headers: config.headers,
     body: JSON.stringify({
       avatar: avatar
     })
@@ -83,11 +74,9 @@ export function updateAvatar(avatar) {
 
 //отправка лайка
 export function sendLike(cardId) {
-  return fetch(`${cardsLikesApi}/${cardId}`, {
+  return fetch(config.baseUrl + "/cards/likes/" + cardId, {
     method: 'PUT',
-    headers: {
-      ...config.headers,
-    }
+    headers: config.headers,
   })
     .then(checkResponse)
     .then((data) => data);
@@ -95,23 +84,20 @@ export function sendLike(cardId) {
 
 //снятие лайка
 export function deleteLike(cardId) {
-  return fetch(`${cardsLikesApi}/${cardId}`, {
+  return fetch(config.baseUrl + "/cards/likes/" + cardId, {
     method: 'DELETE',
-    headers: {
-      ...config.headers,
-    }
+    headers: config.headers,
   })
     .then(checkResponse)
     .then((data) => data);
 };
 
 export function deleteCard(cardId) {
-  return fetch(`${cardsApi}/${cardId}`, {
+  return fetch(config.baseUrl + "/cards/" + cardId, {
     method: 'DELETE',
-    headers: {
-      ...config.headers,
-    }
+    headers: config.headers,
   })
     .then(checkResponse)
     .then((data) => data);
 }
+

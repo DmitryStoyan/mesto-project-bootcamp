@@ -1,5 +1,4 @@
 export const buttonOpenPopupProfile = document.querySelector('.profile__edit-button');
-export const closePopupProfileButton = document.querySelector('.popup__close-profile');
 export const openPopupCard = document.querySelector('.profile__add-button');
 export const closePopupCard = document.querySelector('.popup__close-card');
 export const popupProfile = document.querySelector('.popup-profile');
@@ -24,12 +23,3 @@ export const profile = {
   name: document.querySelector('.profile__title'),
   job: document.querySelector('.profile__subtitle')
 };
-
-// API
-export const cohortId = 'wbc-cohort-1';
-export const token = '2a4a97ff-1e79-431a-b791-507bc640fd7b';
-export const usersMeApi = `https://nomoreparties.co/v1/${cohortId}/users/me`;
-export const cardsApi = `https://nomoreparties.co/v1/${cohortId}/cards`;
-export const usersMeAvatarApi = `https://nomoreparties.co/v1/${cohortId}/users/me/avatar`;
-export const cardsLikesApi = `https://nomoreparties.co/v1/${cohortId}/cards/likes`;
-

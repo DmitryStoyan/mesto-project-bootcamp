@@ -1,5 +1,4 @@
 import { hasInvalidInput } from './validate.js';
-import Api from './api.js'
 
 export function toggleButtonState(inputList, buttonElement, options) {
   if (hasInvalidInput(inputList)) {

@@ -1,36 +1,4 @@
-// import {toggleButtonState} from './utils.js';
-
-// export const showError = (formElement, inputElement, errorMessage, options) => {
-//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-//   console.log(errorElement, formElement.querySelector(`.${inputElement.id}-error`));
-//   errorElement.classList.add(options.errorClass)
-//   errorElement.textContent = errorMessage;
-//   inputElement.classList.add(options.inputErrorClass);
-// };
-
-// export const hideError = (formElement, inputElement, options) => {
-//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-//   errorElement.classList.remove(options.errorClass);
-//   errorElement.textContent = "";
-//   inputElement.classList.remove(options.inputErrorClass);
-// };
-
-// export const checkInputValidity = (formElement, inputElement, options) => {
-//   if (!inputElement.validity.valid) {
-//     showError(formElement, inputElement, inputElement.validationMessage, options);
-//   } else {
-//     hideError(formElement, inputElement, options);
-//   }
-// };
-
-// export function hasInvalidInput(inputList) {
-//   return inputList.some((inputElement) => {
-//     return !inputElement.validity.valid;
-//   });
-// };
-
-
-import {toggleButtonState} from './utils.js';
+import { toggleButtonState } from './utils.js';
 
 export const showError = (formElement, inputElement, errorMessage, options) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -60,14 +28,16 @@ export function hasInvalidInput(inputList) {
   });
 };
 
-export const setEventListener = (formElement,options) => {
+export const setEventListener = (formElement, options) => {
   const inputList = Array.from(formElement.querySelectorAll(options.inputSelector));
   const buttonElement = formElement.querySelector(options.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement,options);
+
+  toggleButtonState(inputList, buttonElement, options);
+
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement,options);
-      toggleButtonState(inputList, buttonElement,options);
+    inputElement.addEventListener('input', () => {
+      checkInputValidity(formElement, inputElement, options);
+      toggleButtonState(inputList, buttonElement, options);
     });
   });
 };
@@ -76,5 +46,10 @@ export const enablevalidation = (options) => {
   const formList = Array.from(document.querySelectorAll(options.formSelector));
   formList.forEach((formElement) => {
     setEventListener(formElement, options);
+    formElement.addEventListener('submit', () => {
+      const buttonElement = formElement.querySelector(options.submitButtonSelector);
+      buttonElement.classList.add(options.inactiveButtonClass);
+      buttonElement.setAttribute("disabled", "disabled");
+    });
   });
 };

@@ -51,20 +51,22 @@ function changeLikeHandler(event, card, likes) {
     deleteLike(card._id)
       .then(card => {
         likes.textContent = card.likes.length;
+        event.target.classList.toggle('element__like_active');
       })
       .catch(error => console.log(error));
   } else {
     sendLike(card._id)
       .then(card => {
         likes.textContent = card.likes.length;
+        event.target.classList.toggle('element__like_active');
       })
       .catch(error => console.log(error));
   }
-  event.target.classList.toggle('element__like_active');
 }
 
 function showImageHandler(event) {
   popupImageContainer.src = event.target.src;
+  popupImageContainer.alt = event.target.alt;
   popupImageName.textContent = event.target.alt;
   openPopup(popupWithImage);
 }

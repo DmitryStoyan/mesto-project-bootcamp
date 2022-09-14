@@ -2,20 +2,15 @@ import '../index.css';
 
 import {
   buttonOpenPopupProfile,
-  closePopupProfileButton,
   openPopupCard,
-  closePopupCard,
   popupProfile,
   popupCard,
   popupCloseButtons,
   editProfileForm,
   formPopupCard,
   cardsContent,
-  popupWithImage,
   editProfileFormNameInput,
   editProfileFormJobInput,
-  popupImageContainer,
-  popupImageName,
   nameInput,
   imageLinkInput,
   profile,
@@ -26,16 +21,22 @@ import {
 } from './constants.js';
 import { closePopup, openPopup } from './modal.js';
 import { createHTMLCard } from './card';
-import { toggleButtonState, resetInputFields } from './utils.js';
+import { resetInputFields } from './utils.js';
 import { enablevalidation } from './validate.js';
 import { getUserInfo, editUserInfo, createCard, getCards, updateAvatar } from './api.js';
 
 let user = null;
 
-// Отправляем запрос на получение данных о пользователе
-getUserInfo()
-  .then(initializeUser)
-  .catch(error => console.log(error));
+Promise.all([getUserInfo(), getCards()])
+  // Отправляем запрос на получение данных о пользователе и всех карточек
+  .then(([user, cards]) => {
+    initializeUser(user);
+    cards.reverse().forEach(card => {
+      cardsContent.prepend(createHTMLCard(card, user));
+    });
+  })
+  .catch((error) => console.log(error))
+  .finally(() => null);
 
 // Загрузка данных пользователя и аватара на страницу
 function initializeUser(_user) {
@@ -45,39 +46,22 @@ function initializeUser(_user) {
   profile.job.textContent = _user.about;
 }
 
-// Отправляем запрос на получение всех карточек
-getCards()
-  .then(cards => cards.reverse().forEach(card => {
-    cardsContent.prepend(createHTMLCard(card, user));
-  }))
-  .catch(error => console.log(error));
-
-buttonOpenPopupProfile.addEventListener('click', () => openPopup(popupProfile, [{
-  input: editProfileFormNameInput,
-  value: profile.name.textContent,
-}, {
-  input: editProfileFormJobInput,
-  value: profile.job.textContent,
-}]));
-closePopupProfileButton.addEventListener('click', () => closePopup(popupProfile));
+buttonOpenPopupProfile.addEventListener('click', () => {
+  editProfileFormNameInput.value = profile.name.textContent;
+  editProfileFormJobInput.value = profile.job.textContent;
+  openPopup(popupProfile);
+});
 
 // Pop-up создания карточки
 openPopupCard.addEventListener('click', () => {
-
   openPopup(popupCard);
 });
-closePopupCard.addEventListener('click', () => closePopup(popupCard));
-// formPopupCard.addEventListener('submit', getValuesFromCreateCardPopup);
-formPopupCard.addEventListener('submit', (event) => {
 
-  event.preventDefault();
-  event.submitter.textContent = 'Сохранение...';
-  getValuesFromCreateCardPopup(event);
-});
-
+formPopupCard.addEventListener('submit', getValuesFromCreateCardPopup);
 
 function editProfile(event) {
   event.preventDefault();
+  event.submitter.textContent = 'Сохранение...';
 
   const newUserInfo = {
     name: editProfileFormNameInput.value,
@@ -89,16 +73,19 @@ function editProfile(event) {
     .then((user) => {
       profile.name.textContent = user.name;
       profile.job.textContent = user.about;
+      closePopup(popupProfile);
     })
-    .catch((error) => console.log(error));
-
-  popupProfile.classList.remove('popup_opened');
+    .catch((error) => console.log(error))
+    .finally(() => {
+      event.submitter.textContent = 'Сохранить';
+    });
 }
 
 editProfileForm.addEventListener('submit', editProfile);
 
 function getValuesFromCreateCardPopup(event) {
   event.preventDefault();
+  event.submitter.textContent = 'Сохранение...';
 
   const card = {
     name: nameInput.value,
@@ -112,7 +99,10 @@ function getValuesFromCreateCardPopup(event) {
       cardsContent.prepend(createHTMLCard(card, user));
       closePopup(popupCard);
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error))
+    .finally(() => {
+      event.submitter.textContent = 'Сохранить';
+    });
 }
 
 popupCloseButtons.forEach((button) => {
@@ -122,14 +112,12 @@ popupCloseButtons.forEach((button) => {
 
 //открытие попап редактирования аватар
 popupAvatarEdit.addEventListener('click', function (event) {
-  inputAvatar.value = '';
   openPopup(popupAvatar);
 });
 
 //функция замены ссылки на аватар
 formAvatar.addEventListener('submit', (event) => {
   event.preventDefault();
-
   event.submitter.textContent = 'Сохранение...';
 
   updateAvatar(inputAvatar.value)
@@ -140,17 +128,8 @@ formAvatar.addEventListener('submit', (event) => {
     .catch((error) => console.log(error))
     .finally(() => {
       event.submitter.textContent = 'Сохранить';
-    })
+    });
 });
-
-document.addEventListener('click', function (event) {
-  const popup = document.querySelector('.popup_opened');
-  if (event.target === popup) {
-    closePopup(popup);
-  }
-});
-
-
 
 enablevalidation({
   formSelector: '.popup__edit-profile',
