@@ -78,6 +78,8 @@ function editProfile(event) {
     .catch((error) => console.log(error))
     .finally(() => {
       event.submitter.textContent = 'Сохранить';
+      event.submitter.classList.add("popup__container-button_disabled");
+      event.submitter.setAttribute("disabled", "disabled");
     });
 }
 
@@ -102,6 +104,8 @@ function getValuesFromCreateCardPopup(event) {
     .catch((error) => console.log(error))
     .finally(() => {
       event.submitter.textContent = 'Сохранить';
+      event.submitter.classList.add("popup__container-button_disabled");
+      event.submitter.setAttribute("disabled", "disabled");
     });
 }
 
@@ -110,12 +114,12 @@ popupCloseButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
-//открытие попап редактирования аватар
+// открытие попап редактирования аватар
 popupAvatarEdit.addEventListener('click', function (event) {
   openPopup(popupAvatar);
 });
 
-//функция замены ссылки на аватар
+// функция замены ссылки на аватар
 formAvatar.addEventListener('submit', (event) => {
   event.preventDefault();
   event.submitter.textContent = 'Сохранение...';
@@ -128,6 +132,8 @@ formAvatar.addEventListener('submit', (event) => {
     .catch((error) => console.log(error))
     .finally(() => {
       event.submitter.textContent = 'Сохранить';
+      event.submitter.classList.add("popup__container-button_disabled");
+      event.submitter.setAttribute("disabled", "disabled");
     });
 });
 
