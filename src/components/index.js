@@ -21,11 +21,19 @@ import {
 } from './constants.js';
 import { closePopup, openPopup } from './modal.js';
 import { createHTMLCard } from './card';
-import { resetInputFields } from './utils.js';
+import { resetInputFields, disableButton } from './utils.js';
 import { enablevalidation } from './validate.js';
 import { getUserInfo, editUserInfo, createCard, getCards, updateAvatar } from './api.js';
 
 let user = null;
+const options = {
+  formSelector: '.popup__edit-profile',
+  inputSelector: '.popup__container-field',
+  submitButtonSelector: '.popup__container-button',
+  inactiveButtonClass: 'popup__container-button_disabled',
+  inputErrorClass: 'popup__container-field_error',
+  errorClass: 'popup__input-error_active',
+};
 
 Promise.all([getUserInfo(), getCards()])
   // Отправляем запрос на получение данных о пользователе и всех карточек
@@ -74,12 +82,11 @@ function editProfile(event) {
       profile.name.textContent = user.name;
       profile.job.textContent = user.about;
       closePopup(popupProfile);
+      disableButton(event.submitter, options);
     })
     .catch((error) => console.log(error))
     .finally(() => {
       event.submitter.textContent = 'Сохранить';
-      event.submitter.classList.add("popup__container-button_disabled");
-      event.submitter.setAttribute("disabled", "disabled");
     });
 }
 
@@ -100,12 +107,11 @@ function getValuesFromCreateCardPopup(event) {
       resetInputFields(nameInput, imageLinkInput);
       cardsContent.prepend(createHTMLCard(card, user));
       closePopup(popupCard);
+      disableButton(event.submitter, options);
     })
     .catch((error) => console.log(error))
     .finally(() => {
       event.submitter.textContent = 'Сохранить';
-      event.submitter.classList.add("popup__container-button_disabled");
-      event.submitter.setAttribute("disabled", "disabled");
     });
 }
 
@@ -128,24 +134,12 @@ formAvatar.addEventListener('submit', (event) => {
     .then((user) => {
       profile.avatar.style.setProperty("background-image", `url(${user.avatar})`);
       closePopup(popupAvatar);
+      disableButton(event.submitter, options);
     })
     .catch((error) => console.log(error))
     .finally(() => {
       event.submitter.textContent = 'Сохранить';
-      event.submitter.classList.add("popup__container-button_disabled");
-      event.submitter.setAttribute("disabled", "disabled");
     });
 });
 
-enablevalidation({
-  formSelector: '.popup__edit-profile',
-  inputSelector: '.popup__container-field',
-  submitButtonSelector: '.popup__container-button',
-  inactiveButtonClass: 'popup__container-button_disabled',
-  inputErrorClass: 'popup__container-field_error',
-  errorClass: 'popup__input-error_active',
-});
-
-
-
-
+enablevalidation(options);

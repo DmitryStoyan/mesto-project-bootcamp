@@ -46,10 +46,5 @@ export const enablevalidation = (options) => {
   const formList = Array.from(document.querySelectorAll(options.formSelector));
   formList.forEach((formElement) => {
     setEventListener(formElement, options);
-    formElement.addEventListener('submit', () => {
-      const buttonElement = formElement.querySelector(options.submitButtonSelector);
-      buttonElement.classList.add(options.inactiveButtonClass);
-      buttonElement.setAttribute("disabled", "disabled");
-    });
   });
 };

@@ -2,8 +2,7 @@ import { hasInvalidInput } from './validate.js';
 
 export function toggleButtonState(inputList, buttonElement, options) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(options.inactiveButtonClass);
-    buttonElement.setAttribute("disabled", "disabled");
+    disableButton(buttonElement, options);
   } else {
     buttonElement.classList.remove(options.inactiveButtonClass);
     buttonElement.removeAttribute("disabled");
@@ -15,3 +14,10 @@ export function resetInputFields(...inputs) {
     input.value = '';
   });
 };
+
+export function disableButton(button, options) {
+  button.classList.add(options.inactiveButtonClass);
+  button.setAttribute("disabled", "disabled");
+}
+
+

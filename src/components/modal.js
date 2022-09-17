@@ -26,7 +26,6 @@ function closePopupOnEscape(event) {
 
 function closePopupOnBackgroundClick(event) {
   if (event.target.classList.contains('popup_opened')) {
-    const popup = document.querySelector('.popup_opened');
-    closePopup(popup);
+    closePopup(event.target);
   }
 }
