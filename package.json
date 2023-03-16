@@ -5,10 +5,7 @@
   "main": "main.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack serve",
-    "start": "css-to-bem-file-structure test.css",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
